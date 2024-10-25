@@ -1,34 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.jetbrains.dokka-android'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'maven-publish'
-apply plugin: 'com.github.dcendents.android-maven'
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'Reachability'
-
-    publishedGroupId = 'ua.eshcherbinock'
-    libraryName = 'Reachability'
-    artifact = 'reachability'
-
-    libraryDescription = 'Simple network status tracker for Android applications'
-
-    siteUrl = 'https://github.com/Eugene-Shcherbinock/Reachability'
-    gitUrl = 'https://github.com/Eugene-Shcherbinock/Reachability.git'
-
-    libraryVersion = '0.0.7'
-
-    developerId = 'eugene-shcherbinock'
-    developerName = 'Eugene Shcherbinock'
-    developerEmail = 'shcherbinock95@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
 
 android {
     compileSdkVersion 28
@@ -62,5 +35,3 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
-
-apply from: 'deploy.gradle'

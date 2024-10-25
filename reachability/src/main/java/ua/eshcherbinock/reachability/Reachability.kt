@@ -24,7 +24,7 @@ interface ReachabilityNotifierType {
 
 }
 
-class Reachability constructor(private val context: Context) : ReachabilityNotifierType, ReachabilityChangeListener {
+class Reachability(private val context: Context) : ReachabilityNotifierType, ReachabilityChangeListener {
 
     enum class State {
         REACHABLE,
@@ -51,7 +51,7 @@ class Reachability constructor(private val context: Context) : ReachabilityNotif
      */
 
     override fun onReachabilityStatusChange(context: Context, intent: Intent?) {
-        isReachable(context, intent).toState().also { newState ->
+        isReachable(context).toState().also { newState ->
             takeIf { newState != currentState }.apply {
                 currentState = newState
                 mObservers.forEach {
@@ -89,7 +89,7 @@ class Reachability constructor(private val context: Context) : ReachabilityNotif
      * Private
      */
 
-    private fun isReachable(context: Context, intent: Intent? = null): Boolean {
+    private fun isReachable(context: Context): Boolean {
         val activeNetworkInformation = getNetworkInformation(context)
         return activeNetworkInformation?.isConnected ?: false
     }
